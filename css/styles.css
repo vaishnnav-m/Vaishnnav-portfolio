@@ -150,6 +150,11 @@ a:hover {
 	background-color: #d3dae2;
 }
 
+.header-info{
+	flex-direction: column-reverse;
+	align-items: center;
+	row-gap: 200px;
+}
 .btn-solid-reg {
 	display: inline-block;
 	padding: 1.375rem 2.25rem 1.375rem 2.25rem;
@@ -172,8 +177,8 @@ a:hover {
 .btn-solid-lg {
 	display: inline-block;
 	padding: 1.625rem 2.625rem 1.625rem 2.625rem;
-	border: 1px solid #0b36a8;
-	background-color: #0b36a8;
+	border: 1px solid #000;
+	background-color: #000;
 	color: #ffffff;
 	font-weight: 600;
 	font-size: 0.875rem;
@@ -183,8 +188,8 @@ a:hover {
 }
 
 .btn-solid-lg:hover {
-	background-color: transparent;
-	color: #0b36a8; /* needs to stay here because of the color property of a tag */
+	background-color: #1d1c1c;
+	color: #fff; /* needs to stay here because of the color property of a tag */
 	text-decoration: none;
 }
 
@@ -244,7 +249,36 @@ a:hover {
 	color: #ffffff;
 	text-decoration: none;
 }
-
+.my-photo-div{
+	width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #e2e2e2;
+	padding-top: 60px;
+}
+.my-photo{
+	width: 300px;
+	height: 300px;
+	position: relative;
+}
+.my-photo img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+	position: absolute;
+  top: 50%;
+	left: 0;
+	border: 5px solid #fff;
+}
+.landing-text{
+	padding-right: 0;
+	padding-left: 23px;
+	max-width: 100%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .form-group {
 	position: relative;
 	margin-bottom: 1.25rem;
@@ -372,21 +406,24 @@ input[type='checkbox'] {
 /*     Navigation     */
 /**********************/
 .navbar {
-	background-color: #24262a;
+	background-color: #ececec99;
 	font-weight: 600;
 	font-size: 0.875rem;
 	line-height: 0.875rem;
 	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.025);
+	outline: 1px solid #eaeaea;
 }
 
 .navbar .navbar-brand {
+	width: 70px;
+	height: 70px;
 	padding-top: 0.125rem;
 	padding-bottom: 0.125rem;
 }
 
 .navbar .logo-image img {
-    width: 118px;
-	height: 36px;
+    width: 100%;
+	height: 100%;
 }
 
 .navbar .logo-text {
@@ -396,7 +433,9 @@ input[type='checkbox'] {
 	line-height: 1rem;
 	text-decoration: none;
 }
-
+.fa-bars{
+	color: #000;
+}
 .offcanvas-collapse {
 	position: fixed;
 	top: 3.25rem; /* adjusts the height between the top of the page and the offcanvas menu */
@@ -427,7 +466,7 @@ input[type='checkbox'] {
 .navbar .nav-item .nav-link {
 	padding-top: 0.625rem;
 	padding-bottom: 0.625rem;
-	color: #ffffff;
+	color: #000;
 	text-decoration: none;
 	transition: all 0.2s ease;
 }
@@ -486,12 +525,13 @@ input[type='checkbox'] {
 
 .navbar .fa-stack {
 	width: 2em;
-	margin-right: 0.25rem;
-	font-size: 0.75rem;
+	margin-right: 11px;
+	margin-left: 0.25rem;
+	font-size: 14px;
 }
 
 .navbar .fa-stack-2x {
-	color: #0b36a8;
+	color: #000;
 	transition: all 0.2s ease;
 }
 
@@ -505,7 +545,7 @@ input[type='checkbox'] {
 }
 
 .navbar .fa-stack:hover .fa-stack-1x {
-	color: #0b36a8;
+	color: #000;
 }
 
 .navbar .navbar-toggler {
@@ -519,16 +559,15 @@ input[type='checkbox'] {
 /*     Header     */
 /******************/
 .header {
-	padding-top: 7rem;
+	padding-top: 0;
 	padding-bottom: 5.5rem;
-	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../images/header-background.jpg') center center no-repeat;
 	background-size: cover;
 	text-align: center;
 }
 
 .header .h1-large {
 	margin-bottom: 1.75rem;
-	color: #ffffff;
+	color: #000;
 }
 
 .header .btn-solid-lg:hover {
@@ -539,7 +578,7 @@ input[type='checkbox'] {
 .header .btn-outline-lg {
 	padding: 1.625rem 1.625rem 1.625rem 1.625rem;
 	border: none;
-	color: #ffffff;
+	color: #000;
 }
 
 .header .btn-outline-lg:hover {
@@ -620,7 +659,7 @@ input[type='checkbox'] {
 /*******************/
 .split .area-1 {
 	height: 430px;
-	background: linear-gradient(to bottom right, rgba(25, 26, 29, 0.5), rgba(25, 26, 29, 0.5)), url('../images/details-background.jpg') center center no-repeat;
+	background: linear-gradient(to bottom right, rgba(25, 26, 29, 0.5), rgba(25, 26, 29, 0.5)), url('https://img.freepik.com/free-photo/customer-service-faqs-illustration_53876-139724.jpg?t=st=1717405946~exp=1717409546~hmac=6bdbc742069916b71125fe2f5ed2474061e74ad28444433c55d106504ada5a16&w=740') center center no-repeat;
 	background-size: cover;
 }
 
@@ -877,16 +916,16 @@ input[type='checkbox'] {
 }
 
 .footer .fa-stack .fa-stack-2x {
-	color: #0b36a8;
+	color: #000;
 	transition: all 0.2s ease;
 }
 
 .footer .fa-stack:hover .fa-stack-1x {
-	color: #0b36a8;
+	color: #000;
 }
 
 .footer .fa-stack:hover .fa-stack-2x {
-    color: #ffffff;
+    color: #fff;
 }
 
 
@@ -997,7 +1036,7 @@ a:hover.back-to-top {
 
 	/* Header */
 	.header {
-		padding-top: 11rem;
+		padding-top: 0;
 		padding-bottom: 9rem;
 	}
 	/* end of header */
@@ -1015,11 +1054,29 @@ a:hover.back-to-top {
 	.ex-basic-1 .text-box {
 		padding: 1.75rem 2rem 0.875rem 2rem;
 	}
-	/* end of extra pages */
-}
+	/* end of extra pages */}
 /* end of min-width 768px */
-
-
+@media (max-width:376px) {
+	.header-info{
+		row-gap: 160px;
+	}
+}
+@media (max-width:768px) {
+	.navbar .navbar-brand{
+		height: 60px;
+		width: 60px;
+	}
+}
+@media (max-width:992px) {
+	.social-icons{
+		display: none;
+	}
+	.my-photo{
+		width: 250px;
+		height: 250px;
+		padding-top:0 ;
+	}
+}
 /* Min-width 992px */
 @media (min-width: 992px) {
 	
@@ -1049,7 +1106,7 @@ a:hover.back-to-top {
 	.navbar.top-nav-collapse {
 		padding-top: 0.5rem;
 		padding-top: 0.5rem;
-		background-color: #24262a;
+		background-color: #ececec99;
 		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.025);
 	}
 
@@ -1095,15 +1152,16 @@ a:hover.back-to-top {
 	}
 	
 	.navbar .fa-stack {
-		margin-right: 0;
+		margin-right: 11px;
 		margin-left: 0.25rem;
 	}
+	
 	/* end of navigation */
 
 
 	/* Header */
 	.header {
-		padding-top: 15rem;
+		padding-top: 0;
 		padding-bottom: 14rem;
 		text-align: left;
 	}
@@ -1220,7 +1278,7 @@ a:hover.back-to-top {
 
 	/* Header */
 	.header {
-		padding-top: 18.25rem;
+		padding-top: 0;
 		padding-bottom: 17.25rem;
 	}
 	/* end of header */
