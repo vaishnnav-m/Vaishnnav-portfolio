@@ -80,13 +80,13 @@
 
             <span class="nav-item social-icons">
                 <span class="fa-stack">
-                    <a href="#your-link">
+                    <a href="https://www.instagram.com/vaishnnav.m?igsh=MnBuem5za2N4NjBs">
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-instagram fa-stack-1x"></i>
                     </a>
                 </span>
                 <span class="fa-stack">
-                    <a href="#your-link">
+                    <a href="https://shorturl.at/Fzm5S">
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-linkedin fa-stack-1x"></i>
                     </a>
@@ -111,7 +111,7 @@
 
             <div class="my-photo-div">
                 <div class="my-photo">
-                    <img src="https://media.istockphoto.com/id/854297210/photo/portrait-of-handsome-bristled-middle-aged-man.jpg?s=612x612&w=0&k=20&c=hPHfvcv6Ni-BuV6COzLd9seOArNYovcXtQkiejHbIms=" alt="">
+                    <img src="https://media.licdn.com/dms/image/D4D03AQEEt7lFxKyQuQ/profile-displayphoto-shrink_400_400/0/1715477856323?e=1723075200&v=beta&t=fWxtUbeMhYeMePP9HV8kLFsNT42X3xY9nkIjEXh9xaw" alt="">
                 </div>
             </div>
             </div> <!-- end of row -->
@@ -282,15 +282,15 @@
                     <!-- Contact Form -->
                     <form id="contactForm" name="submit-to-google-sheet">
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="cname" required>
+                            <input type="text" class="form-control-input" id="cname" name="name" required>
                             <label class="label-control" for="cname">Name</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control-input" id="cemail" required>
+                            <input type="email" class="form-control-input" id="cemail" name="email" required>
                             <label class="label-control" for="cemail">Email</label>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control-textarea" id="cmessage" required></textarea>
+                            <textarea class="form-control-textarea" id="cmessage" name="message" required></textarea>
                             <label class="label-control" for="cmessage">Project details</label>
                         </div>
                         <div class="form-group">
@@ -299,6 +299,7 @@
                     </form>
                     <!-- end of contact form -->
 
+                    <div class="message" id="message"></div>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -313,14 +314,14 @@
                 <div class="col-lg-12">
                     <div class="social-container">
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="https://shorturl.at/Fzm5S">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-linkedin fa-stack-1x"></i>
                             </a>
                         </span>
                       
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="https://www.instagram.com/vaishnnav.m?igsh=MnBuem5za2N4NjBs">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-instagram fa-stack-1x"></i>
                             </a>
@@ -339,7 +340,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © <a class="no-line" href="#your-link">Vaishnnav</a></p>
+                    <p class="p-small">Copyright © <a class="no-line" href="#">Vaishnnav</a></p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->
@@ -349,6 +350,27 @@
     
     	
     <!-- Scripts -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw7ozUtLqzmFUDfhdPYuo9UM4VlDIB9USctbIoIuFhLSnumzOSz0adCjtK-rG_gMN91/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const success= document.getElementById('message');
+    
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    success.innerHTML="Data successfully sent";
+
+                    setTimeout(function()
+                {
+                    success.innerHTML="";
+                    location.reload();
+                },5000)
+               
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
     <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->

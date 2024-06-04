@@ -76,24 +76,3 @@
 	});
 
 })(jQuery);
-
-/* contact mail submission */
-
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwzZ5KaizT5UiL84O-9_GzbFxmqwKdV99p1HfSWHqZ4V3MMKc5QFcT0XQvdy3tDz2qw/exec'
-			const form = document.forms['submit-to-google-sheet']
-			const success= document.getElementById('cmessage');
-		
-			form.addEventListener('submit', e => {
-				e.preventDefault()
-				fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-					.then(response => {
-						success.innerHTML="Data successfully sent";
-
-						setTimeout(function()
-					{
-						success.innerHTML="";
-					},5000)
-					 location.reload();
-					})
-					.catch(error => console.error('Error!', error.message))
-			})
