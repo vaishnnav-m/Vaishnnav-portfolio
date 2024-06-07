@@ -889,8 +889,9 @@ input[type='checkbox'] {
 .form-1 .p-heading {
 	margin-bottom: 4rem;
 }
-
-
+.error{
+	color: red;
+}
 /******************/
 /*     Footer     */
 /******************/

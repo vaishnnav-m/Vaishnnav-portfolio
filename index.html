@@ -9,7 +9,7 @@
     <meta name="author" content="Your name">
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
-	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site_name" content="yaishnav" /> <!-- website name -->
 	<meta property="og:site" content="" /> <!-- website link -->
 	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
 	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
@@ -278,25 +278,31 @@
             </div> <!-- end of row -->
             <div class="row">
                 <div class="col-lg-12">
-                    
+
                     <!-- Contact Form -->
+
                     <form id="contactForm" name="submit-to-google-sheet">
                         <div class="form-group">
                             <input type="text" class="form-control-input" id="cname" name="name" required>
                             <label class="label-control" for="cname">Name</label>
+                            <span class="error" id="nameError"></span>
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control-input" id="cemail" name="email" required>
                             <label class="label-control" for="cemail">Email</label>
+                            <span class="error" id="emailError"></span>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control-textarea" id="cmessage" name="message" required></textarea>
                             <label class="label-control" for="cmessage">Project details</label>
+                            <span class="error" id="messageError"></span>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">Submit</button>
+                            <button type="submit" class="form-control-submit-button" onclick="validateForm(event)">Submit</button>
                         </div>
                     </form>
+                    <div class="message"></div>
+    
                     <!-- end of contact form -->
 
                     <div class="message" id="message"></div>
@@ -340,7 +346,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © <a class="no-line" href="#">Vaishnnav</a></p>
+                    <p class="p-small" >Copyright © <a class="no-line" href="#">Vaishnnav</a></p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->
@@ -350,13 +356,14 @@
     
     	
     <!-- Scripts -->
-    <script>
+
+  <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbw7ozUtLqzmFUDfhdPYuo9UM4VlDIB9USctbIoIuFhLSnumzOSz0adCjtK-rG_gMN91/exec'
         const form = document.forms['submit-to-google-sheet']
         const success= document.getElementById('message');
     
-        form.addEventListener('submit', e => {
-            e.preventDefault()
+        function submit(){
+            
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
                     success.innerHTML="Data successfully sent";
@@ -369,8 +376,52 @@
                
                 })
                 .catch(error => console.error('Error!', error.message))
-        })
+        }
     </script>
+    <script>
+        function validateForm(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    let isValid = true;
+
+    // Clear previous errors
+    document.getElementById('nameError').textContent = '';
+    document.getElementById('emailError').textContent = '';
+    document.getElementById('messageError').textContent = '';
+
+    // Validate name
+    const name = document.getElementById('cname').value.trim();
+    if (name === '') {
+        document.getElementById('nameError').textContent = 'Name is required';
+        isValid = false;
+    }
+
+    // Validate email
+    const email = document.getElementById('cemail').value.trim();
+    const emailPattern = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+    if (email === '') {
+        document.getElementById('emailError').textContent = 'Email is required';
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        document.getElementById('emailError').textContent = 'Invalid email format';
+        isValid = false;
+    }
+
+    // Validate message
+    const message = document.getElementById('cmessage').value.trim();
+    if (message === '') {
+        document.getElementById('messageError').textContent = 'Project details are required';
+        isValid = false;
+    }
+
+    // If the form is valid, submit it
+    if (isValid) {
+        submit();
+    }
+
+    
+}
+    </script> 
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
     <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
